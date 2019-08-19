@@ -1,0 +1,88 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<head>
+<!-- Smartsupp Live Chat script -->
+
+</head>
+
+<div style="text-align:center"></div>
+
+  <div *ngIf="!name; else forminfo">
+    <form [formGroup]="rForm" (ngSubmit)="addPost(rForm.value)">
+      <div class="form-container">
+        <div class="row columns">
+  
+          <h1> Employee Application-Form</h1>
+          
+          <div class="w3-row-padding">
+              <div class="w3-half">
+          <label>Name
+            <input class="w3-input w3-animate-input" style="width:200px" type="text" formControlName="name">
+          </label>
+          <div class="alert" *ngIf="!rForm.controls['name'].valid && rForm.controls['name'].touched">{{ titleAlert }}</div>
+        </div>
+
+        <div class="w3-half">
+            <label>Email
+              <input class="w3-input w3-animate-input" style="width:200px" type="text" formControlName="email">
+            </label>
+            <div class="alert" *ngIf="!rForm.controls['email'].valid && rForm.controls['email'].touched">Enter mail id *requried</div>
+          </div>
+          
+          <div class="w3-half">
+              <label>Current Company
+                <input class="w3-input w3-animate-input" style="width:200px" type="text" formControlName="company">
+              </label>
+              <div class="alert" *ngIf="!rForm.controls['company'].valid && rForm.controls['company'].touched">Kindly enter present working company name</div>
+            </div>
+
+          <div class="w3-half">
+          <label>Experience
+            <input class="w3-input w3-animate-input" style="width:200px" type="text" formControlName="experience">
+          </label>
+          <div class="alert" *ngIf="!rForm.controls['experience'].valid && rForm.controls['experience'].touched">{{ titleAlert }}</div>
+        </div>
+
+        <div class="w3-half">
+            <label>Skills
+              <input class="w3-input w3-animate-input" style="width:200px" type="text" formControlName="skill">
+            </label>
+            <div class="alert" *ngIf="!rForm.controls['skill'].valid && rForm.controls['skill'].touched">{{ titleAlert }}</div>
+          </div>
+
+          <div class="w3-half">
+          <label>Address
+            <textarea formControlName="address"></textarea>
+          </label>
+          <div class="alert" *ngIf="!rForm.controls['address'].valid && rForm.controls['address'].touched">You must specify a description that's between 20 and 500 characters.</div><br>
+          </div>
+        </div>
+  
+          
+  
+          <input type="submit" class="button expanded" value="Submit Form" [disabled]="!rForm.valid">
+        </div>
+
+      
+           
+           <button mat-raised-button color="accent" class="b2">call<a href="tel:123-456-7890">123-456-7890</a></button>
+
+      </div>
+    </form>
+  </div>
+
+  
+  
+  <ng-template #forminfo>
+    <div class="form-container">
+      <div class="row columns">
+          <h1>{{ name }}</h1>
+          <h4>{{email}}</h4>
+          <h4>{{company}}</h4>
+          <h4>{{skill}}</h4>
+          <h4>{{experience}}</h4>
+          <p>{{ address }}</p>
+      </div>
+    </div>
+  </ng-template>
+
+<router-outlet></router-outlet>
